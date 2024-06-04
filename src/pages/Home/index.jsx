@@ -1,3 +1,4 @@
+import { FiPlus } from 'react-icons/fi'
 import { Container, Brand, Menu, Search, Content, NewNote } from './style'
 
 import { Header } from '../../Components/Header'
@@ -13,7 +14,7 @@ export function Home(){
       <Header/>
 
       <Menu>
-        <li><ButtonText title="Todos" isActive/></li>
+        <li><ButtonText title="Todos" $isActive="false"/></li>
         <li><ButtonText title="Node" /></li>
         <li><ButtonText title="React"/></li>
       </Menu>
@@ -22,7 +23,10 @@ export function Home(){
 
       <Content></Content>
 
-      <NewNote></NewNote>
+      <NewNote>
+        <FiPlus/>
+        Criar nota
+      </NewNote>
 
     </Container>
   )
