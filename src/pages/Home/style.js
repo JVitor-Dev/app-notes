@@ -48,6 +48,9 @@ export const Search = styled.div`
 
 export const Content = styled.div`
   grid-area: content;
+  margin: 0 64px;
+  padding-right: 10px;
+  overflow-y: auto;
 `
 
 export const NewNote = styled.button`
