@@ -8,7 +8,7 @@ export function Profile(){
   return(
     <Container>
       <header>
-        <a href="/home"><FiCamera/></a>
+        <a href="/home"><FiArrowLeft/></a>
       </header>
 
       <Form>
