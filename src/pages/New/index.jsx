@@ -1,4 +1,5 @@
 import { Container, Form } from "./style";
+import { Link } from "react-router-dom"
 
 import { Header } from '../../Components/Header'
 import { Input } from '../../Components/Input'
@@ -17,7 +18,7 @@ export function New(){
 
           <header>
             <h1>Criar nota</h1>
-            <a href="/">voltar</a>
+            <Link to="/">voltar</Link>
           </header>
 
           <Input 
