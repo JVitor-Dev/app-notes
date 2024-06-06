@@ -2,11 +2,12 @@ import { Container, Form } from "./style";
 
 import { Header } from '../../Components/Header'
 import { Input } from '../../Components/Input'
+import { Button } from '../../Components/Button'
 import { TextArea } from '../../Components/TextArea'
 import { NoteItem } from '../../Components/NoteItem'
 import { Section } from '../../Components/Section'
 
-export function NewNote(){
+export function New(){
   return(
     <Container>
       <Header/>
@@ -29,6 +30,15 @@ export function NewNote(){
             <NoteItem value="https://rocketseat.com.br"/>
             <NoteItem isnew='true' placeholder='Novo link'/>
           </Section>
+
+          <Section title="Marcadores">
+            <div className="tags">
+              <NoteItem value="react"/>
+              <NoteItem isnew='true' placeholder='Nova Tag'/>
+            </div>
+          </Section>
+
+          <Button title="Salvar"/>
         </Form>
       </main>
     </Container>

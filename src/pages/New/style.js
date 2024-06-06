@@ -9,7 +9,19 @@ export const Container = styled.div`
   grid-template-areas:
     'header'
     'Content';
+
+  > main {
+    grid-area: 'content';
+    overflow-y: auto;
+  }
+
+  .tags {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
 `
+
 export const Form = styled.form`
   max-width: 550px;
   margin: 38px auto;
