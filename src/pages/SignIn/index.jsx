@@ -5,7 +5,8 @@ import {Button} from "../../Components/Button"
 
 import { Container, Form, Background } from "./style"
 
-export function SignIn(){
+function SignIn(){
+
   return(
     <Container>
       <Form>
@@ -25,7 +26,7 @@ export function SignIn(){
         icon={FiLock}
       />
 
-      <Button title="Entrar"/>
+      <Button title="Entrar" />
 
       <Link to="/register">Criar conta</Link>
       </Form>
