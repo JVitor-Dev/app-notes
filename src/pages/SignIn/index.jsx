@@ -5,7 +5,12 @@ import {Button} from "../../Components/Button"
 
 import { Container, Form, Background } from "./style"
 
-function SignIn(){
+import { useAuth } from "../../hooks/auth"
+
+export function SignIn(){
+
+  const context = useAuth()
+  console.log("meu contexto => ", context)
 
   return(
     <Container>
