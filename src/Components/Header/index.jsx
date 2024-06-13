@@ -4,6 +4,7 @@ import { Container, Profile, Logout } from './style'
 import { useAuth } from '../../hooks/auth'
 
 import { api } from '../../../../../Stage 08/iniciando-nodejs/src/services/api'
+import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
 
 export function Header(){
   const { signOut, user } = useAuth()
