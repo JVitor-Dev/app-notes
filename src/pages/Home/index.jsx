@@ -22,7 +22,6 @@ export function Home(){
       return setTagsSelected([])
     }
 
-
     const alreadySelected = tagsSelected.includes(tagName)
 
     if(alreadySelected){
@@ -44,7 +43,7 @@ export function Home(){
 
   useEffect(() => {
     async function fetchNotes(){
-      const response = await api.get(`/notes?title${search}&tags=${tagsSelected}`)
+      const response = await api.get(`/notes?title=search notes by name${search}&tags=${tagsSelected}`)
       setNotes(response.data)
     }
 
@@ -82,7 +81,7 @@ export function Home(){
         <Input
           icon={FiSearch}
           placeholder="Pesquisar pelo título" 
-          onChange={() => setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.target.value)}
         />
       </Search>
 
