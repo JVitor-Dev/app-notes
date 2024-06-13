@@ -6,6 +6,9 @@ import {Container, Form, Avatar} from './style'
 import { useState } from 'react'
 import { useAuth } from "../../hooks/auth"
 
+import { api } from '../../../../../Stage 08/iniciando-nodejs/src/services/api'
+import avatarPlaceholder from "../../assets/avatar_placeholder.svg"
+
 export function Profile(){
   const { user, updateProfile } = useAuth()
 
@@ -14,6 +17,10 @@ export function Profile(){
   const [passwordOld, setPasswordOld] = useState()
   const [passwordNew, setPasswordNew] = useState()
 
+  const avatarURL = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
+  const [avatar, setAvatar] = useState(avatarURL) //se já tem avatar mostra esse
+  const [avatarFile, setAvatarFile] = useState(null) //esse carrega um novo avatar
+
   async function handleUpdate(){
     const user = {
       name,
@@ -21,8 +28,16 @@ export function Profile(){
       password: passwordNew,
       old_password: passwordOld
     }
+    await updateProfile({user, avatarFile});
+  }
 
-    await updateProfile({user});
+  function handleChangeAvatar(event){
+    const file = event.target.files[0];
+    setAvatarFile(file)
+
+    const imagePreview = URL.createObjectURL(file)
+    setAvatar(imagePreview)
+    
   }
 
   return(
@@ -33,12 +48,12 @@ export function Profile(){
 
       <Form>
         <Avatar>
-          <img src="https://github.com/JVitor-Dev.png" alt="Foto do usuário" />
+          <img src={avatar} alt="Foto do usuário" />
 
           <label htmlFor="avatar">
             <FiCamera/>
 
-            <input id="avatar" type="file"/>
+            <input id="avatar" type="file" onChange={handleChangeAvatar}/>
           </label>
         </Avatar>
 
