@@ -1,5 +1,6 @@
 import { Container, Form } from "./style";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { api } from '../../../../../Stage 08/iniciando-nodejs/src/services/api'
 
 import { Header } from '../../Components/Header'
 import { Input } from '../../Components/Input'
@@ -10,6 +11,8 @@ import { Section } from '../../Components/Section'
 import { useState } from "react";
 
 export function New(){
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
 
   const [links, setLinks] = useState([])
   const [newLink, setNewLink] = useState()
@@ -36,6 +39,33 @@ export function New(){
     setTags(prevTags => prevTags.filter(tag => tag !== deleted))
   }
 
+  const navigate = useNavigate()
+
+  async function handleNewNote(){
+    if(!title){
+      return alert("Digite o título da nota")
+    }
+
+    if(newLink){
+      return alert("Você digitou um link porém não salvou, salve o link ou deixei o campo branco.")
+    }
+
+    if(newTag){
+      return alert("Você digitou uma tag porém não salvou, salve a tag ou deixei o campo branco.")
+    }
+
+
+    await api.post("/notes", {
+      title,
+      description,
+      links,
+      tags
+    })
+
+    alert("Nota criada com sucesso!")
+    navigate("/")
+  }
+
   return(
     <Container>
       <Header/>
@@ -49,10 +79,14 @@ export function New(){
           </header>
 
           <Input 
-          placeholder="Título"
+            placeholder="Título"
+            onChange={e => setTitle(e.target.value)}
           />
 
-          <TextArea placeholder="Observações"/>
+          <TextArea
+            placeholder="Observações"
+            onChange={e => setDescription(e.target.value)}
+          />
 
           <Section title="Links úteis">
             {
@@ -93,7 +127,7 @@ export function New(){
             </div>
           </Section>
 
-          <Button title="Salvar"/>
+          <Button title="Salvar" onClick={handleNewNote}/>
         </Form>
       </main>
     </Container>
