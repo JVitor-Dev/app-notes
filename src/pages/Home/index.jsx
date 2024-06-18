@@ -10,12 +10,15 @@ import { Header } from '../../Components/Header'
 import { Input } from '../../Components/Input'
 import { Section } from '../../Components/Section'
 import { Note } from '../../Components/Note'
+import { useNavigate } from 'react-router-dom'
 
 export function Home(){
   const [search, setSearch] = useState("")
   const [tags, setTags] = useState([])
   const [tagsSelected, setTagsSelected] = useState([])
   const [notes, setNotes] = useState([])
+
+  const navigate = useNavigate()
 
   function handleTagSelected(tagName){
     if(tagName === "all"){
@@ -32,18 +35,22 @@ export function Home(){
     }
   }
 
+  function handleDetails(id){
+    navigate(`/details/${id}`)
+  }
+
   useEffect(() => {
-    async function handleTags(){
+    async function fetchTags(){
       const response = await api.get('/tags')
       setTags(response.data)
     }
 
-    handleTags()
+    fetchTags()
   },[])
 
   useEffect(() => {
     async function fetchNotes(){
-      const response = await api.get(`/notes?title=search notes by name${search}&tags=${tagsSelected}`)
+      const response = await api.get(`/notes?title=${search}&tags=${tagsSelected}`)
       setNotes(response.data)
     }
 
@@ -91,7 +98,9 @@ export function Home(){
             notes.map(note => (
               <Note 
                 key={String(note.id)}
-                data={note}/>
+                data={note}
+                onClick={() => handleDetails(note.id)}
+                />
             ))
           }
 

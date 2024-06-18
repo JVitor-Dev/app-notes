@@ -1,5 +1,5 @@
 import {FiArrowLeft, FiUser, FiMail, FiLock, FiCamera} from 'react-icons/fi'
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import {Input} from '../../Components/Input'
 import {Button} from '../../Components/Button'
 import {Container, Form, Avatar} from './style'
@@ -20,6 +20,12 @@ export function Profile(){
   const avatarURL = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
   const [avatar, setAvatar] = useState(avatarURL) //se já tem avatar mostra esse
   const [avatarFile, setAvatarFile] = useState(null) //esse carrega um novo avatar
+
+  const navigate = useNavigate()
+
+  function handleBack(){
+    navigate(-1)
+  }
 
   async function handleUpdate(){
     const user = {
@@ -43,7 +49,9 @@ export function Profile(){
   return(
     <Container>
       <header>
-        <Link to="/"><FiArrowLeft/></Link>
+        <button type='button' onClick={handleBack}>
+          <FiArrowLeft/>
+        </button>
       </header>
 
       <Form>

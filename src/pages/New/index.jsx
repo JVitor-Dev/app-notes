@@ -1,10 +1,11 @@
 import { Container, Form } from "./style";
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { api } from '../../../../../Stage 08/iniciando-nodejs/src/services/api'
 
 import { Header } from '../../Components/Header'
 import { Input } from '../../Components/Input'
 import { Button } from '../../Components/Button'
+import { ButtonText } from '../../Components/ButtonText'
 import { TextArea } from '../../Components/TextArea'
 import { NoteItem } from '../../Components/NoteItem'
 import { Section } from '../../Components/Section'
@@ -20,6 +21,9 @@ export function New(){
   const [tags, setTags] = useState([])
   const [newTag, setNewTag] = useState()
 
+  function handleBack(){
+    navigate(-1)
+  }
 
   function handleAddLinks(){
     setLinks(prevLinks => [...prevLinks, newLink])
@@ -58,12 +62,12 @@ export function New(){
     await api.post("/notes", {
       title,
       description,
-      links,
-      tags
+      tags,
+      links
     })
 
     alert("Nota criada com sucesso!")
-    navigate("/")
+    navigate(-1)
   }
 
   return(
@@ -75,7 +79,7 @@ export function New(){
 
           <header>
             <h1>Criar nota</h1>
-            <Link to="/">voltar</Link>
+            <ButtonText title="Voltar" onClick={handleBack}/>
           </header>
 
           <Input 
