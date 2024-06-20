@@ -6,7 +6,7 @@ import { Tag } from "../../Components/Tag"
 import { Button } from "../../Components/Button" 
 
 import { useState, useEffect } from 'react'
-import { api } from '../services/api'
+import { api } from '../../services/api'
 import { useNavigate, useParams } from "react-router-dom"
 
 export function Details(){

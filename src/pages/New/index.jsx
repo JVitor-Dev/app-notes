@@ -1,6 +1,6 @@
 import { Container, Form } from "./style";
 import { useNavigate } from "react-router-dom"
-import { api } from '../services/api'
+import { api } from '../../services/api'
 
 import { Header } from '../../Components/Header'
 import { Input } from '../../Components/Input'
