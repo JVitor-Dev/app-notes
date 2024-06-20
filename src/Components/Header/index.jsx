@@ -3,7 +3,7 @@ import { Container, Profile, Logout } from './style'
 
 import { useAuth } from '../../hooks/auth'
 
-import { api } from '../../../../../Stage 08/iniciando-nodejs/src/services/api'
+import { api } from '../../services/api'
 import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
 
 export function Header(){
