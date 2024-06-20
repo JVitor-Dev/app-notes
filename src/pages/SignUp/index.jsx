@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Container, Form, Background } from "./style"
 import { FiUser, FiMail, FiLock } from "react-icons/fi"
 
-import {api} from "../../../../../Stage 08/iniciando-nodejs/src/services/api"
+import {api} from "../services/api"
 
 import { Link, useNavigate } from "react-router-dom"
 import {Input} from "../../Components/Input"

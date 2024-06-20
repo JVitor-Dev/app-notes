@@ -3,7 +3,7 @@ import { Container, Brand, Menu, Search, Content, NewNote } from './style'
 
 import { ButtonText } from '../../Components/ButtonText'
 
-import{ api } from '../../../../../Stage 08/iniciando-nodejs/src/services/api'
+import{ api } from '../services/api'
 import { useState, useEffect } from 'react'
 
 import { Header } from '../../Components/Header'
