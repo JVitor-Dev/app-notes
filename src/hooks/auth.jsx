@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 
-import { api } from '../../../../Stage 08/iniciando-nodejs/src/services/api'
+import { api } from '../../../../Stage 08/rocketnotes-backend/src/services/api'
 
 export const AuthContext = createContext({})
 
